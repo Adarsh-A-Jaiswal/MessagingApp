@@ -1,0 +1,70 @@
+{
+  "contacts": [
+    {
+      "firstName": "Simon",
+      "lastName": "Raddy",
+      "mobileNumber": 9876543210,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Jack",
+      "lastName": "Singh",
+      "mobileNumber": 9876543210,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "John",
+      "lastName": "France",
+      "mobileNumber": 9825684230,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Tom",
+      "lastName": "Preston",
+      "mobileNumber": 9876543210,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Chris",
+      "lastName": "Wanstrath",
+      "mobileNumber": 9876543210,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "PJ",
+      "lastName": "Hyett",
+      "mobileNumber": 1234567890,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Yehuda",
+      "lastName": "Katz",
+      "mobileNumber": 1234567890,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Ezra",
+      "lastName": "Zygmuntowicz",
+      "mobileNumber": 1234567890,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "D. Ivey",
+      "mobileNumber": 1234567890,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Evan",
+      "lastName": "Phoenix",
+      "mobileNumber": 1234567890,
+      "countryCode": "+91"
+    },
+    {
+      "firstName": "Chris",
+      "lastName": "Van Pelt",
+      "mobileNumber": 1234567890,
+      "countryCode": "+91"
+    }
+  ]
+}

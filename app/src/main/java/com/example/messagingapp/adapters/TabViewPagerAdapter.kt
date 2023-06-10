@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.messagingapp.fragments.ContactsFragment
 import com.example.messagingapp.fragments.MessagesFragment
 
-class ContactsViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+class TabViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
     // it returns total number of tabs in ViewPager

@@ -5,4 +5,9 @@
     <string name="first_tab_title">Contacts</string>
     <string name="second_tab_title">Messages</string>
     <string name="tab_layout_description">Tab</string>
+    <string name="person_name">Person name</string>
+    <string name="mobile_num">9876543210</string>
+    <string name="info_image_description">Info</string>
+    <string name="person_full_name">%1$s %2$s</string>
+    <string name="mobile_with_code">%1$s %2$s</string>
 </resources>
