@@ -1,0 +1,15 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MessagingApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">#00000000</item>
+    </style>
+
+    <item name="tabSelectedTextColor" type="color">#5F9EA0</item>
+    <item name="tabTextColor" type="color">#FFF</item>
+    <item name="tabBackgroundColor" type="color">@android:color/transparent</item>
+
+    <item name="drawable_color" type="color">#FFFFFFFF</item>
+    <item name="barBackColor" type="color">#00000000</item>
+</resources>

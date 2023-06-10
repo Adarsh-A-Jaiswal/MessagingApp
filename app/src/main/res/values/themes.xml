@@ -1,0 +1,20 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MessagingApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
+
+    </style>
+
+    <style name="Theme.MessagingApp" parent="Base.Theme.MessagingApp" />
+
+    <item name="tabSelectedTextColor" type="color">#4169E1</item>
+    <item name="tabTextColor" type="color">#666666</item>
+    <item name="tabBackgroundColor" type="color">@color/white</item>
+
+    <item name="drawable_color" type="color">#FF000000</item>
+    <item name="barBackColor" type="color">#FFFFFFFF</item>
+
+</resources>
