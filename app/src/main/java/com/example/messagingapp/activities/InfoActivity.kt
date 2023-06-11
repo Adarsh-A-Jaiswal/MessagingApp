@@ -8,7 +8,9 @@ import com.example.messagingapp.common.Constants
 import com.example.messagingapp.databinding.ActivityInfoBinding
 import com.example.messagingapp.fragments.ComposeMessageFragment
 import com.example.messagingapp.fragments.ContactInfoFragment
+import com.example.messagingapp.modelsClasses.Contact
 import com.example.messagingapp.viewModels.SharedViewModel
+import com.google.gson.Gson
 
 class InfoActivity : AppCompatActivity() {
     private val viewModel: SharedViewModel by viewModels()
@@ -20,13 +22,10 @@ class InfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-        setObservers()
 
-        val bundle = intent.extras?.getBundle("bundle")
-        bundle?.let {
-            val tabKey = it.getString(Constants.CONTACT_TAB_KEY)
-            setFragment(tabKey, it)
-        }
+        setFragment()
+
+        setObservers()
 
     }
 
@@ -38,16 +37,31 @@ class InfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun setFragment(tabKey: String?, bundle: Bundle) {
-        tabKey?.let {
-            if (tabKey == Constants.CONTACT) {
-                //open ContactInfo fragment
-                openContactInfoFragment(bundle)
-            } else {
-                //open Compose message fragment
-                openComposeMessageFragment(bundle)
+    private fun setFragment() {
+        val extraBundle = intent.extras?.getBundle("bundle")
+        extraBundle?.let { bundle ->
+            val tabKey = bundle.getString(Constants.CONTACT_TAB_KEY)
+            tabKey?.let {
+                if (tabKey == Constants.CONTACT) {
+                    //open ContactInfo fragment
+                    openContactInfoFragment(bundle)
+                } else {
+                    //open Compose message fragment
+                    setToolBarTitle(bundle)
+                    openComposeMessageFragment(bundle)
+                }
             }
         }
+    }
+
+    private fun setToolBarTitle(bundle: Bundle) {
+        val infoJsonString = bundle.getString(Constants.CONTACT_JSON_KEY)
+        val contactInfo = Gson().fromJson(infoJsonString, Contact::class.java)
+        binding.toolbar.title = getString(
+            R.string.person_full_name,
+            contactInfo.firstName,
+            contactInfo.lastName
+        )
     }
 
     private fun openContactInfoFragment(bundle: Bundle) {
@@ -57,6 +71,7 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun openComposeMessageFragment(bundle: Bundle) {
+        setToolBarTitle(bundle)
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.nav_host_fragment, ComposeMessageFragment.newInstance(bundle))
             .addToBackStack("Back").commit()
