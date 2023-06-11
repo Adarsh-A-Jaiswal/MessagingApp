@@ -10,4 +10,7 @@
     <string name="info_image_description">Info</string>
     <string name="person_full_name">%1$s %2$s</string>
     <string name="mobile_with_code">%1$s %2$s</string>
+    <string name="msgBtn_description">Message</string>
+    <string name="sendBtn_text">Send Message</string>
+
 </resources>

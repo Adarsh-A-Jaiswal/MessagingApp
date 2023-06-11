@@ -1,5 +1,6 @@
 package com.example.messagingapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.messagingapp.activities.InfoActivity
 import com.example.messagingapp.adapters.ContactListAdapter
+import com.example.messagingapp.common.Constants
 import com.example.messagingapp.common.Utils
 import com.example.messagingapp.databinding.FragmentContactsBinding
 import com.example.messagingapp.modelsClasses.Contact
 import com.example.messagingapp.modelsClasses.Contacts
 import com.example.messagingapp.viewModels.ContactViewModel
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.google.gson.Gson
 
 class ContactsFragment : Fragment() {
 
@@ -58,8 +59,22 @@ class ContactsFragment : Fragment() {
      */
     private fun setAdapter() {
         //initializing adapter with ContactListAdapter and passing empty Contact list
-        adapter = ContactListAdapter(requireContext(), contactList)
+        adapter = ContactListAdapter(requireContext(), contactList, ::onItemClick)
         recyclerView.adapter = adapter
+    }
+
+    private fun onItemClick(contact: Contact, position: Int) {
+        //navigate to contactInfo Activity
+        val bundle = Bundle()
+        bundle.apply {
+            putString(Constants.CONTACT_JSON_KEY, Gson().toJson(contact))
+            putString(Constants.CONTACT_TAB_KEY, Constants.CONTACT)
+        }
+        val intent = Intent(requireContext(), InfoActivity::class.java).apply {
+            putExtra("bundle", bundle)
+        }
+
+        requireActivity().startActivity(intent)
     }
 
     /**
@@ -86,14 +101,8 @@ class ContactsFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) = ContactsFragment().apply {
-            arguments = Bundle().apply {
-                putString(ARG_PARAM1, param1)
-                putString(ARG_PARAM2, param2)
-            }
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -10,7 +10,8 @@ import com.example.messagingapp.modelsClasses.Contact
 
 class ContactListAdapter(
     private val context: Context,
-    private val contactList: ArrayList<Contact>
+    private val contactList: ArrayList<Contact>,
+    private val onItemClick: (Contact, Int) -> Unit
 ) :
     RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>() {
 
@@ -18,6 +19,7 @@ class ContactListAdapter(
         RecyclerView.ViewHolder(binding.root) {
         val personNameTv = binding.tvPersonName
         val personMobileTv = binding.tvMobileNum
+        val containerTv = binding.tvContainer
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
@@ -47,6 +49,9 @@ class ContactListAdapter(
             contact.mobileNumber.toString()
         )
 
+        holder.containerTv.setOnClickListener {
+            onItemClick.invoke(contact, holder.adapterPosition)
+        }
     }
 
 }
