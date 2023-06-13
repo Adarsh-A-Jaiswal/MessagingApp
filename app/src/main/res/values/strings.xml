@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MessagingApp</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="message">Hello! how are You?</string>
     <!--name of tabs-->
     <string name="first_tab_title">Contacts</string>
     <string name="second_tab_title">Messages</string>
@@ -12,5 +12,7 @@
     <string name="mobile_with_code">%1$s %2$s</string>
     <string name="msgBtn_description">Message</string>
     <string name="sendBtn_text">Send Message</string>
+    <string name="dateFormat">%1$s %2$s %3$s</string>
+    <string name="no_messages">No Messages</string>
 
 </resources>

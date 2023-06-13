@@ -1,11 +1,14 @@
 package com.example.messagingapp.viewModels
 
+import android.app.Application
 import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.messagingapp.modelsClasses.Contacts
+import com.example.messagingapp.modelsClasses.Message
+import com.example.messagingapp.repository.MessageRepository
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -13,7 +16,7 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import java.nio.charset.Charset
 
-class ContactViewModel() : ViewModel() {
+class ContactViewModel(private val application: Application) : AndroidViewModel(application) {
 
     //mutable live data for contacts
     private val _contacts = MutableLiveData<Contacts?>()
@@ -26,6 +29,12 @@ class ContactViewModel() : ViewModel() {
 
     // getter for _errorLiveData var
     val errorLiveData: LiveData<String?> get() = _errorLiveData
+
+    //mutable live data for messages
+    private val _messages = MutableLiveData<ArrayList<Message>?>()
+
+    // getter for _message var
+    val messages: LiveData<ArrayList<Message>?> get() = _messages
 
     /**
      * Method to load the Contacts from the Assets file and post to liveData
@@ -57,7 +66,6 @@ class ContactViewModel() : ViewModel() {
         val charset: Charset = Charsets.UTF_8
         try {
             val myUsersJSONFile = appContext.assets.open("data.json")
-//            json = inputStream.bufferedReader().use { it.readText() }
             val size = myUsersJSONFile.available()
             val buffer = ByteArray(size)
             myUsersJSONFile.read(buffer)
@@ -69,6 +77,13 @@ class ContactViewModel() : ViewModel() {
             return null
         }
         return json
+    }
+
+    fun loadMessagesFromDB() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val messagesDef = async { MessageRepository(application).getMessages() }
+            _messages.postValue(messagesDef.await() as ArrayList<Message>)
+        }
     }
 
 }

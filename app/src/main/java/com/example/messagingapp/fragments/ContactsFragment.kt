@@ -71,7 +71,7 @@ class ContactsFragment : Fragment() {
             putString(Constants.CONTACT_TAB_KEY, Constants.CONTACT)
         }
         val intent = Intent(requireContext(), InfoActivity::class.java).apply {
-            putExtra("bundle", bundle)
+            putExtra(Constants.BUNDLE_KEY, bundle)
         }
 
         requireActivity().startActivity(intent)

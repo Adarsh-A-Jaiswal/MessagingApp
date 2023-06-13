@@ -38,14 +38,14 @@ class InfoActivity : AppCompatActivity() {
     }
 
     private fun setFragment() {
-        val extraBundle = intent.extras?.getBundle("bundle")
+        val extraBundle = intent.extras?.getBundle(Constants.BUNDLE_KEY)
         extraBundle?.let { bundle ->
             val tabKey = bundle.getString(Constants.CONTACT_TAB_KEY)
             tabKey?.let {
                 if (tabKey == Constants.CONTACT) {
                     //open ContactInfo fragment
                     openContactInfoFragment(bundle)
-                } else {
+                } else if (tabKey == Constants.MESSAGE) {
                     //open Compose message fragment
                     setToolBarTitle(bundle)
                     openComposeMessageFragment(bundle)
@@ -62,6 +62,7 @@ class InfoActivity : AppCompatActivity() {
             contactInfo.firstName,
             contactInfo.lastName
         )
+        binding.toolbar.subtitle = getString(R.string.mobile_with_code)
     }
 
     private fun openContactInfoFragment(bundle: Bundle) {
