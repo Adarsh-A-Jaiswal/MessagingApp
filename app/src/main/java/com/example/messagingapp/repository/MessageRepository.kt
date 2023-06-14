@@ -3,6 +3,7 @@ package com.example.messagingapp.repository
 import android.content.Context
 import com.example.messagingapp.database.MessageDatabase
 import com.example.messagingapp.modelsClasses.Message
+import kotlin.random.Random
 
 class MessageRepository(context: Context) {
 
@@ -22,6 +23,10 @@ class MessageRepository(context: Context) {
 
     suspend fun deleteMessage(message: Message) {
         database.messageDao().deleteMessage(message = message)
+    }
+
+    suspend fun sendMessage(message: Message){
+
     }
 
 }

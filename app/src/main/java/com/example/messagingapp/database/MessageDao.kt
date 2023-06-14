@@ -18,6 +18,6 @@ interface MessageDao {
     @Query("SELECT * FROM message WHERE phone = :phoneWithCode")
     suspend fun getMessagesFor(phoneWithCode: String): List<Message>
 
-    @Query("SELECT id,name,phone,message,MAX(timeStamp) AS timeStamp FROM message GROUP BY phone")
+    @Query("SELECT id,name,phone,message,MAX(timeStamp) AS timeStamp FROM message GROUP BY phone ORDER BY id DESC")
     suspend fun getAllMessages(): List<Message>
 }

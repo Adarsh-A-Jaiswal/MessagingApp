@@ -13,8 +13,4 @@ object Utils {
     fun showToast(context: Context, message: String) {
         context.makeToast(message)
     }
-
-    internal fun getLocalDateTime(date: Long): LocalDateTime? {
-        return Instant.ofEpochSecond(date).atZone(ZoneId.systemDefault()).toLocalDateTime()
-    }
 }

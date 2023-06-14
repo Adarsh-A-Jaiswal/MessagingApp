@@ -83,7 +83,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/date_time_container"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@id/tv_container"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,14 +91,15 @@
 
             <TextView
                 android:id="@+id/tv_date_time"
-                style="@style/Widget.ContactBody.TextView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:gravity="center"
+                android:textAppearance="?attr/textAppearanceHeadline3"
+                android:textColor="@color/contact_numColor"
+                android:textSize="12sp"
                 android:text="00:00 01/12/2023"
                 android:textAlignment="center"
-                android:textAppearance="?android:textAppearanceLarge"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

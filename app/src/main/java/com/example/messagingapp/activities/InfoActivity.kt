@@ -45,10 +45,6 @@ class InfoActivity : AppCompatActivity() {
                 if (tabKey == Constants.CONTACT) {
                     //open ContactInfo fragment
                     openContactInfoFragment(bundle)
-                } else if (tabKey == Constants.MESSAGE) {
-                    //open Compose message fragment
-                    setToolBarTitle(bundle)
-                    openComposeMessageFragment(bundle)
                 }
             }
         }
@@ -62,7 +58,12 @@ class InfoActivity : AppCompatActivity() {
             contactInfo.firstName,
             contactInfo.lastName
         )
-        binding.toolbar.subtitle = getString(R.string.mobile_with_code)
+        binding.toolbar.subtitle =
+            getString(
+                R.string.mobile_with_code,
+                contactInfo.countryCode,
+                contactInfo.mobileNumber.toString()
+            )
     }
 
     private fun openContactInfoFragment(bundle: Bundle) {

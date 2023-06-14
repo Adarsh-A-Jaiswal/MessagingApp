@@ -37,6 +37,8 @@ class ContactInfoFragment : Fragment() {
         _binding = FragmentContactInfoBinding.inflate(layoutInflater, container, false)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as AppCompatActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
+        (activity as AppCompatActivity).supportActionBar?.title = ""
+        (activity as AppCompatActivity).supportActionBar?.subtitle = ""
         return binding.root
     }
 

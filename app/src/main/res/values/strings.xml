@@ -14,5 +14,6 @@
     <string name="sendBtn_text">Send Message</string>
     <string name="dateFormat">%1$s %2$s %3$s</string>
     <string name="no_messages">No Messages</string>
+    <string name="demo_text">Hi, Your OTP is: 543261</string>
 
 </resources>

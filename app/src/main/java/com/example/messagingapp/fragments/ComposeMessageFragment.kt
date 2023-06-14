@@ -62,7 +62,8 @@ class ComposeMessageFragment : Fragment() {
                 val currentDateTime = System.currentTimeMillis()
                 val message =
                     Message(0, fullName, phone, message = textMessage.toString(), currentDateTime)
-                viewModel.saveMessageInDB(message)
+                viewModel.sendMessage(message = message)
+                binding.etMessage.setText("")
             }
         }
     }
